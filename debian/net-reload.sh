@@ -1,5 +1,5 @@
 #!/bin/bash
-PASS=484
+PASS=$1
 expect -c "
 spawn sudo systemctl restart NetworkManager
 expect -nocase \":\" {send \"$PASS\r\"; interact}"

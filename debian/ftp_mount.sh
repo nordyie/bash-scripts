@@ -2,6 +2,7 @@
 install_pass=$1;
 user="n0rdye";
 folder="Disks";
+con_pass=$install_pass
 func(){
 
 	if [ -d "/home/$user/$folder" ]; then
@@ -37,14 +38,14 @@ func(){
 					echo "$c_name not mounted."
 					if [ -d "/home/$user/$folder/$c_name" ]; then
 						echo "folder for $c_name exist";
-						con "484" $str $ip $srv_name
+						con $con_pass $str $ip $srv_name
 					else
 						# echo "none";
 						echo "creating /home/$user/$folder/$c_name";
 						mkdir "/home/$user/$folder/$c_name";
 						if [ -d "/home/$user/$folder/$c_name" ]; then
 							echo "folder created"
-							con "484" $str $ip $srv_name
+							con $con_pass $str $ip $srv_name
 						fi
 					fi
 				fi
@@ -105,12 +106,6 @@ install
 
 # SRV_1
 
-# echo 'yes' | echo '484' | sshfs html@192.168.0.7:/home/html /home/n0rdye/FTP/html -o password_stdin 
-# echo 'yes' | echo '484' | sshfs n0rdye@192.168.0.7:/home/n0rdye /home/n0rdye/FTP/srv_1 -o password_stdin
-
-# # SRV_2
-# echo 'yes' | echo '484' | sshfs mc@192.168.0.6:/home/mc /home/n0rdye/FTP/mc -o password_stdin 
-# echo 'yes' | echo '484' | sshfs n0rdye@192.168.0.6:/home/n0rdye /home/n0rdye/FTP/srv_2 -o password_stdin
 
 
 
