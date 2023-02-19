@@ -9,7 +9,7 @@ func(){
 
 	if [ -d "/home/$user/$folder" ]; then
 		ip_1="192.168.0.7";
-		srv_1=("ftp" "html" "n0rdye");
+		srv_1=("ftp" "html" "n0rdye" "assis");
 
 		ip_2="192.168.0.6";
 		srv_2=("n0rdye" "mc");
@@ -21,8 +21,10 @@ func(){
 			srv_names=$4
 			echo "connecting to $ip $pass $host $srv_names";
 			if [[ "$host" != "$user" ]]; then
+				# echo $user.$folder.$host.$srv_names
 				echo "yes" | echo "$pass" | sshfs $host@$ip:/home/$host /home/$user/$folder/$host-$srv_names -o password_stdin
 			elif [[ "$host" == "$user" ]]; then
+				# echo "asd"
 				echo "yes" | echo "$pass" | sshfs $host@$ip:/ /home/$user/$folder/$host-$srv_names -o password_stdin
 			fi
 		}
